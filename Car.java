@@ -73,6 +73,7 @@ public class Car extends Base implements Checkable {
         return false;
     }
 
+
     public void lock() {
         if ((this.doorBL.isState() && this.doorBR.isState() && this.doorFL.isState() && this.doorFR.isState()) == closeAllDoors()) {
             System.out.println("The car close");
@@ -101,20 +102,5 @@ public class Car extends Base implements Checkable {
             System.out.println("Sit down in the car");
             doorFL.close();
         }
-    }
-
-    public static void main(String[] args) {
-        Car car = new Car();
-        car.sitInCar();
-        car.checkAll();
-        car.start();
-        car.setTemp(23);
-        car.drive();
-        car.turnL();
-        car.turnR();
-        car.setTemp(16);
-        car.stop();
-        car.lock();
-
     }
 }
