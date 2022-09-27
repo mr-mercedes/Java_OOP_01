@@ -1,20 +1,25 @@
 package ru.geekbrains.oop01;
 
-public class Base {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Base implements Checkable{
     private Engine engine;
     private Wheel wheelFL;
     private Wheel wheelFR;
     private Wheel wheelBL;
     private Wheel wheelBR;
     private Transmission transmission;
+    private List<Checkable> checkables;
 
     public Base() {
-        this.engine = new Engine();
+        this.engine = new BenzineEngine();
         this.wheelFL = new Wheel();
         this.wheelFR = new Wheel();
         this.wheelBL = new Wheel();
         this.wheelBR = new Wheel();
-        this.transmission = new Transmission();
+        this.transmission = new AutomaticTransmission();
+        this.checkables = new ArrayList<>(List.of(engine, wheelBL,wheelBR, wheelFL, wheelFR, transmission));
     }
 
     public void start(){
@@ -30,6 +35,18 @@ public class Base {
         }
     }
     public void stop(){
-        engine.stop();
+        this.transmission.switchGearInternal(0);
+        this.engine.stop();
+    }
+
+    public void checkAll(){
+        for (Checkable checkable: checkables){
+            checkable.check();
+        }
+    }
+
+    @Override
+    public void check() {
+        checkAll();
     }
 }

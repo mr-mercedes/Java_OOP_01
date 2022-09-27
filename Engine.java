@@ -1,23 +1,30 @@
 package ru.geekbrains.oop01;
 
-public class Engine {
+public abstract class Engine implements Checkable{
     private Boolean work;
 
     public void start(){
         this.work = true;
-        System.out.println("wroom... wroom... motherfacer");
+        startInternal();
     }
+    protected abstract void startInternal();
     public void stop(){
         this.work = false;
-        System.out.println("bay bay baby");
+        stopInternal();
     }
+    protected abstract void stopInternal();
     public void throttleUp(int level){
         if (this.work){
-            System.out.println("Fast and Furious to " + level);
+            throttleUpInternal(level);
         }
     }
+    protected abstract void throttleUpInternal(int level);
 
     public Boolean getWork() {
         return work;
+    }
+    @Override
+    public void check(){
+        System.out.println("Engine is ok");
     }
 }

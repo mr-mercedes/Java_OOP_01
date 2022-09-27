@@ -1,6 +1,6 @@
 package ru.geekbrains.oop01;
 
-public class Door {
+public class Door implements Checkable{
     private boolean state = true;
 
     public void open(){
@@ -14,5 +14,9 @@ public class Door {
 
     public boolean isState() {
         return state;
+    }
+    @Override
+    public void check(){
+        System.out.println("Door is ok");
     }
 }

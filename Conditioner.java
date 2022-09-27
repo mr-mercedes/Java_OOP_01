@@ -1,6 +1,6 @@
 package ru.geekbrains.oop01;
 
-public class Conditioner {
+public class Conditioner implements Checkable {
     private boolean work;
     int temperature;
 
@@ -15,6 +15,10 @@ public class Conditioner {
 
     public boolean isWork() {
         return work;
+    }
+    @Override
+    public void check(){
+        System.out.println("Conditioner is ok");
     }
 
     public void switchTemperature(int num){
